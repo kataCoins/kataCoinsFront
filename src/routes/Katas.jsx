@@ -24,7 +24,7 @@ function Katas({userAddress, setUserAddress}) {
     return (
       <div className="w-3/5 flex flex-col">
         <div className="overflow-x-auto shadow-md sm:rounded-lg">
-          <div className="inline-block w-full w-3/4 align-middle">
+          <div className="inline-block w-full align-middle">
             <div className="overflow-hidden ">
               <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
                 <thead className="bg-gray-100 dark:bg-gray-700">
