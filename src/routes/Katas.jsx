@@ -55,16 +55,20 @@ function Katas({userAddress, setUserAddress}) {
       return (
         <tr key={kata.id} className="hover:bg-gray-100 dark:hover:bg-gray-700">
           <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {kata.name}
+            {kata.name} {kata.isOwned ? " (owned)" : ""}
           </td>
           <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-            <Link className="text-white hover:text-yellow-400 p-1 border-2 hover:border-yellow-400 rounded"
-              to='/try-kata'
-              state={{
-                userAddress: userAddress,
-                kata: kata
-              }}
-            >Try</Link>
+            {!kata.isOwned ?
+              <Link className="text-white hover:text-yellow-400 p-1 border-2 hover:border-yellow-400 rounded"
+                    to='/try-kata'
+                    state={{
+                      userAddress: userAddress,
+                      kata: kata
+                    }}
+              >Try</Link>
+              :
+              <></>
+            }
           </td>
         </tr>
       );

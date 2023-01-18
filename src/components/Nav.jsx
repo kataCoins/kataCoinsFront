@@ -1,9 +1,19 @@
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-function Nav({userAddress, setUserAddress}) {
+export default function Nav({userAddress, setUserAddress}) {
   const { ethereum } = window;
   const [isConnected, setIsConnected] = useState(false);
+
+  ethereum.on('accountsChanged', function (accounts) {
+    setUserAddress(accounts[0]);
+  })
+
+  useEffect(() => {
+    if (userAddress !== '') {
+      setIsConnected(true);
+    }
+  }, [userAddress])
   const connectWallet = async () => {
     try {
       if (!ethereum) {
@@ -43,8 +53,8 @@ function Nav({userAddress, setUserAddress}) {
                 <Link to="/katas"
                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Katas</Link>
 
-                <Link to="/about"
-                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
+                <Link to="/create-kata"
+                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Create kata</Link>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -57,5 +67,3 @@ function Nav({userAddress, setUserAddress}) {
     </nav>
   );
 }
-
-export default Nav;

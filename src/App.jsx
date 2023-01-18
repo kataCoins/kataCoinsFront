@@ -7,6 +7,7 @@ import Katas from "./routes/Katas.jsx";
 import About from "./routes/About.jsx";
 import {useState} from "react";
 import TryKata from "./routes/TryKata.jsx";
+import CreateKata from "./routes/CreateKata.jsx";
 
 function App() {
   const [userAddress, setUserAddress] = useState('');
@@ -19,6 +20,7 @@ function App() {
           <Route path="/katas" element={<Katas userAddress={userAddress} setUserAddress={setUserAddress} />} />
           <Route path="/about" element={<About />} />
           <Route path="/try-kata" element={<TryKata />} />
+          <Route path="/create-kata" element={<CreateKata userAddress={userAddress}/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
