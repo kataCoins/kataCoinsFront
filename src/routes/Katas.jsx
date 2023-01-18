@@ -103,7 +103,7 @@ function Katas({userAddress, setUserAddress}) {
 
     return (
       <div className="flex justify-center items-center">
-        <h1 className="m-9 p-4 text-white text-lg">You have {credit} credit</h1>
+        <h1 className="m-9 p-4 text-white text-lg">You have {credit} credits</h1>
         <button onClick={buyNow} className="p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
           Buy credit
         </button>
