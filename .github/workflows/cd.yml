@@ -19,5 +19,5 @@ jobs:
             cd kataCoinsFront
             git pull
             docker build . -t kata-coin-front
-            docker rm -f kata-coin-front
+            docker rm -f kata-coin-frontend
             docker run -d -p5173:5173 --name kata-coin-frontend kata-coin-front

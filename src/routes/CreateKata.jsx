@@ -28,6 +28,7 @@ export default function CreateKata({userAddress}) {
   async function onSubmitCreateKata() {
     if (!checkData()) {
       alert("Please fill all the fields");
+      return;
     }
     const isSuccess = await createKata(name, statement, functionDeclaration, tests);
 
