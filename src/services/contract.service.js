@@ -10,12 +10,19 @@ export async function getAllKatas() {
     KataCoins.abi,
     provider.getSigner(0)
   );
-  const response = await contract.functions.getAllKata();
-  const data = response[0];
+
+  const response = await contract.getAllKata();
+
   let katas = [];
-  data.forEach((kata) => {
-    katas.push(new Kata(kata.id.toNumber(), kata.name, kata.statement, kata.functionDeclaration));
+
+  response.forEach((data) => {
+    let kata = data.kata;
+    let isOwned = data.isOwned;
+    katas.push(
+        new Kata(kata.id.toNumber(), kata.name, kata.statement, kata.functionDeclaration, isOwned)
+    );
   });
+
   return katas;
 }
 

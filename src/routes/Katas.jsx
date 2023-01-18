@@ -74,12 +74,12 @@ function Katas({userAddress, setUserAddress}) {
   function buildKataRender() {
     if (userAddress === '') {
       return (
-        <h1 className="mt-9 p-9 text-white text-lg rounded border-2 border-red-700">You need to connect you with MetaMask</h1>
+        <h1 className="mt-9 p-9 text-white text-lg rounded border-2 border-red-700">You need to connect to MetaMask</h1>
       );
     }
     if (katas.length === 0) {
       return (
-        <h1 className="mt-9 p-9 text-white text-lg rounded border-2 border-amber-500">There are no kata for the moment...</h1>
+        <h1 className="mt-9 p-9 text-white text-lg rounded border-2 border-amber-500">There are no kata at the moment...</h1>
       );
     }
     return buildListKatas();
