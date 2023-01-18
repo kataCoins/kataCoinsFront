@@ -9,6 +9,7 @@ export default function CreateKata({userAddress}) {
   const [functionDeclaration, setFunctionDeclaration] = useState("");
 
   useEffect( () => {
+    document.title = "Create kata"
     async function checkOwner() {
       const owner = await getOwner();
       if (userAddress.toUpperCase() !== owner.toUpperCase()) {

@@ -2,6 +2,7 @@ import {useEffect} from "react";
 
 export default function NotFound() {
   useEffect(() => {
+    document.title = "Not Found";
     setInterval(() => {
       window.location.href = "/";
     }, 4000);

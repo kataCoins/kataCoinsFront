@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Editor from "@monaco-editor/react";
 import {executeKataRequest} from "../services/api.service.js";
 
@@ -8,6 +8,10 @@ export default function TryKata() {
   const location = useLocation();
   const {userAddress, kata} = location.state;
   const [code, setCode] = useState(kata.functionDeclaration);
+
+  useEffect(() => {
+    document.title = "Try kata";
+  }, [kata]);
 
   async function onSubmitTry() {
     await executeKataRequest(code, userAddress, kata.id)

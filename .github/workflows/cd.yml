@@ -1,0 +1,25 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd kataCoinsFront
+            git pull
+            docker build . -t kata-coin-front
+            docker rm -f kata-coin-backend
+            docker run -d -p5173:5173 --name kata-coin-frontend kata-coin-front

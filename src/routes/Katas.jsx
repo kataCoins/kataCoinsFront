@@ -7,6 +7,7 @@ function Katas({userAddress, setUserAddress}) {
   const [credit, setCredit] = useState(null);
 
   useEffect( () => {
+    document.title = "Katas"
     async function fetchData() {
       const katas = await getAllKatas();
       const credit = await getCredit();
