@@ -46,7 +46,6 @@ export async function buyCredit(nbTry = 20) {
       nbTry, {value: price.toString()}
     );
   } catch (error) {
-    // console.error(error);
     return await getCredit();
   }
 

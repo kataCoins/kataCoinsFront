@@ -20,12 +20,11 @@ export async function executeKataRequest(code, userAddress, kataId) {
     );
 
     if (data.exec_result.status === 0) {
-      console.log("success");
       await mintKata(kataId);
     } else {
-      console.log('rip')
+      alert("Kata failed. Sorry!");
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
